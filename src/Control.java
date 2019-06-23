@@ -7,7 +7,7 @@ import java.util.logging.SimpleFormatter;
 
 
 
-public class Control extends Thread{
+public class Control implements Runnable{
 
     private Monitor miMonitor;
     private String mensaje;
@@ -41,7 +41,7 @@ public class Control extends Thread{
         logger.log(Level.INFO, mensaje);
 
         try {
-            sleep(2000);
+            Thread.currentThread().sleep(2000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

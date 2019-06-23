@@ -8,6 +8,7 @@ public class Monitor {
     private Semaphore semaphore;
     private List<Semaphore> colas;
     private RDP rdp;
+    private Politica miPolitica;
     private int Lugares_Vacios_1;
     private int Lugares_Vacios_2;
     private int Lugares_Ocupados_1;
@@ -22,6 +23,7 @@ public class Monitor {
             colas.add(new Semaphore(0, true));
         }
         rdp=new RDP();
+        miPolitica=new Politica();
         Lugares_Vacios_1=10;
         Lugares_Vacios_2=15;
         Lugares_Ocupados_1=0;
@@ -75,11 +77,16 @@ public class Monitor {
         return 0;
     }
 
+    public boolean puedoDisparar(int T){
+        return rdp.puedoDisparar(T);
+    }
+
     private boolean hayHilos(){
         if(largoColas()==0){
             return false;
         }
         BitSet sensibilizadas=rdp.getSensibilizadas();
+
         for(int i=0; i<8; i++){
             este=i;
             if(sensibilizadas.get(i)&& colas.get(i).hasQueuedThreads()){
