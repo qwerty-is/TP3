@@ -43,7 +43,7 @@ public class RDP {
         return Sensibilizadas;
     }
 
-    public dispararRed(int transicion){
+    public void dispararRed(int transicion){
         actualizarMarcado(transicion);
         actualizarSensibilizadas();
         actualizarTiempos();
