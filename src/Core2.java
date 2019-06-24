@@ -7,11 +7,11 @@ public class Core2 implements Tarea {
 
     @Override
     public boolean ejecutar(){
-        monitor.disparar(9);
+        monitor.disparar(8);
         monitor.disparar(2);
-        monitor.disparar(10);
-        if (monitor.puedoDisparar(8)){
-            monitor.disparar(8);
+        while (!monitor.disparar(9))
+        if (monitor.puedoDisparar(7)){
+            monitor.disparar(7);
             return true;
         }
         return false;

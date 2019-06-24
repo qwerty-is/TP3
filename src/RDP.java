@@ -35,8 +35,8 @@ public class RDP {
     public RDP(){
         Sensibilizadas=new BitSet(COLUMNAS);
         Esperando=new BitSet(COLUMNAS);
-        Sensibilizadas.set(3);
-        Esperando.set(3);
+        actualizarSensibilizadas();
+        actualizarTiempos();
     }
 
     public BitSet getSensibilizadas() {

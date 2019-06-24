@@ -27,7 +27,7 @@ public class Monitor {
         Tareas_Nucleo_2=0;
     }
 
-    public void disparar(int T){
+    public boolean disparar(int T){
         try {
             semaphore.acquire();
         } catch (InterruptedException e) {
@@ -36,23 +36,36 @@ public class Monitor {
         k=true;
         while(k==true){
 
+            k=rdp.puedoDisparar(T);
 
             if(k==true){
+                if (rdp.inVentana(T)){
+                    rdp.dispararRed(T);
 
-                switch(T){
-                    case 4: Tareas_Nucleo_1++;   break;
-                    case 5: Tareas_Nucleo_1--;   break;
-                    case 8: Tareas_Nucleo_2++;   break;
-                    case 10: Tareas_Nucleo_2--;   break;
-                    default:                        break;
+                    switch(T){
+                        case 4: Tareas_Nucleo_1++;   break;
+                        case 5: Tareas_Nucleo_1--;   break;
+                        case 8: Tareas_Nucleo_2++;   break;
+                        case 10: Tareas_Nucleo_2--;   break;
+                        default:                        break;
+                    }
+
+                    if(hayHilos()){
+                        colas.get(miPolitica.cualDespierto(opciones)).release();
+                        return true;
+                    }
+
+                    k=false;
                 }
-
-                if(hayHilos()){
-                    colas.get(miPolitica.cualDespierto(opciones)).release();
-                    return;
+                else {
+                    semaphore.release();
+                    try {
+                        Thread.currentThread().sleep(rdp.tiempoRestante(T));
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    return false;
                 }
-                k=false;
-
             }
             else{
                 semaphore.release();
@@ -65,7 +78,7 @@ public class Monitor {
             }
         }
         semaphore.release();
-        return;
+        return true;
     }
 
     public boolean puedoDisparar(int T){
