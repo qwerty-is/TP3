@@ -13,7 +13,13 @@ public class MyThreadFactory implements ThreadFactory {
         this.nombre=nombre;
         stats=new ArrayList<String>();
     }
+    public Thread newThread(Runnable r,boolean isDaemon){
+        Thread t=newThread(r);
+        t.setDaemon(isDaemon);
+        return t;
 
+    }
+    @Override
     public Thread newThread(Runnable r){
         Thread t=new Thread(r, nombre+"-Thread_"+contador);
         contador++;

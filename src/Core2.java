@@ -8,6 +8,7 @@ public class Core2 implements Tarea {
     @Override
     public boolean ejecutar(){
         monitor.disparar(9);
+        monitor.disparar(2);
         monitor.disparar(10);
         if (monitor.puedoDisparar(8)){
             monitor.disparar(8);

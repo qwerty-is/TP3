@@ -9,15 +9,13 @@ public class Monitor {
     private List<Semaphore> colas;
     private RDP rdp;
     private Politica miPolitica;
-    private int Lugares_Vacios_1;
-    private int Lugares_Vacios_2;
-    private int Lugares_Ocupados_1;
-    private int Lugares_Ocupados_2;
+    private int Tareas_Nucleo_2;
+    private int Tareas_Nucleo_1;
     private BitSet opciones;
     private boolean k;
 
     public Monitor(Politica politica){
-        semaphore=new Semaphore(1,true);
+        semaphore=new Semaphore(1,false);
         colas=new ArrayList<>();
         for(int i=0; i<11; i++){
             colas.add(new Semaphore(0, true));
@@ -25,10 +23,8 @@ public class Monitor {
         rdp=new RDP();
         opciones=new BitSet(11);
         miPolitica=politica;
-        Lugares_Vacios_1=10;
-        Lugares_Vacios_2=15;
-        Lugares_Ocupados_1=0;
-        Lugares_Ocupados_2=0;
+        Tareas_Nucleo_1=0;
+        Tareas_Nucleo_2=0;
     }
 
     public void disparar(int T){
@@ -40,24 +36,21 @@ public class Monitor {
         k=true;
         while(k==true){
 
-            k=rdp.dispararRed(T);
+            if (!Thread.currentThread().isDaemon()){
+                k=rdp.dispararRed(T);
+            }
 
             if(k==true){
 
                 switch(T){
-                    case 0: Lugares_Ocupados_1++;   break;
-                    case 1: Lugares_Vacios_1--;     break;
-                    case 2: Lugares_Vacios_2--;     break;
-                    case 3: Lugares_Ocupados_1--;   break;
-                    case 4: Lugares_Ocupados_2--;   break;
-                    case 5: Lugares_Ocupados_2++;   break;
-                    case 6: Lugares_Vacios_2++;     break;
-                    case 7: Lugares_Vacios_1++;     break;
+                    case 4: Tareas_Nucleo_1++;   break;
+                    case 5: Tareas_Nucleo_1--;   break;
+                    case 8: Tareas_Nucleo_2++;   break;
+                    case 10: Tareas_Nucleo_2--;   break;
                     default:                        break;
                 }
 
                 if(hayHilos()){
-
                     colas.get(miPolitica.cualDespierto(opciones)).release();
                     return;
                 }
@@ -110,7 +103,7 @@ public class Monitor {
 
     public String estadisticas (){
         String stats;
-        stats="\nLugares ocupados buffer1: " + Lugares_Ocupados_1 + "\nLugares ocupados buffer2: " + Lugares_Ocupados_2
+        stats="\nTareas en espera del nucleo1: " + Tareas_Nucleo_1 + "\nTareas en espera del nucleo2: " + Tareas_Nucleo_2
                 + "\nHilos en las colas de espera: " + largoColas()
                 + "\nHilos en espera del mutex: " + semaphore.getQueueLength();
         return stats;
