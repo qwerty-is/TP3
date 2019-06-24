@@ -5,9 +5,9 @@ public class RDP {
 
     private final int FILAS=12;
     private final int COLUMNAS=11;
-    private final long ALFA=0;
-    private final long BETA=0;
-    private final long GAMMA=0;
+    private final long ALFA=10;
+    private final long BETA=10;
+    private final long GAMMA=10;
 
     private int[][] marcadoActual={{1},{0},{0},{0},{1},{0},{0},{0},{1},{0},{0},{1}};
     private int[][] matrizW={
@@ -29,7 +29,7 @@ public class RDP {
 
     private BitSet Sensibilizadas;
     private BitSet Esperando;
-    private long[] tiemposSensibilizados;
+    private long[] tiemposSensibilizados = {0,0,0,0,0,0,0,0,0,0,0};
     private long[] tiempos = {0,0,0,ALFA,0,0,BETA,0,0,GAMMA,0,0};
 
     public RDP(){
@@ -66,6 +66,15 @@ public class RDP {
         {
             Sensibilizadas.clear(7);
         }
+        if(marcadoActual[2][0]==0){
+            Sensibilizadas.clear(0);
+        }
+        if(marcadoActual[3][0]==0){
+            Sensibilizadas.clear(2);
+            Sensibilizadas.clear(5);
+            Sensibilizadas.clear(8);
+        }
+
     }
 
     public boolean puedoDisparar(int transicion){

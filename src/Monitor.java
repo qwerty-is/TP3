@@ -36,7 +36,9 @@ public class Monitor {
         k=true;
         while(k==true){
 
+            System.out.println("Hola soy: " + Thread.currentThread().getName() + " y quiero disparar " + (T+2));
             k=rdp.puedoDisparar(T);
+            System.out.println("K vale: "+k);
 
             if(k==true){
                 if (rdp.inVentana(T)){
@@ -58,6 +60,7 @@ public class Monitor {
                     k=false;
                 }
                 else {
+                    System.out.println("Hola soy: " + Thread.currentThread().getName() + " y llegue antes de la ventana de " + (T+2));
                     semaphore.release();
                     try {
                         Thread.currentThread().sleep(rdp.tiempoRestante(T));
@@ -68,6 +71,7 @@ public class Monitor {
                 }
             }
             else{
+                System.out.println("Hola soy: " + Thread.currentThread().getName() + " y no pude disparar " + (T+2));
                 semaphore.release();
                 try {
                     colas.get(T).acquire();

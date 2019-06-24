@@ -15,9 +15,10 @@ public class Generador implements Runnable{
     public void run(){
         for (int i=0; i<repeticiones; i++){
             T=3;
-            while (!monitor.disparar(T))
+            while (!monitor.disparar(T)){}
             T=politica.dondeGuardo();
             monitor.disparar(T);
+            monitor.disparar(2);
         }
     }
 }

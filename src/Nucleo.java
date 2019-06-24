@@ -19,7 +19,6 @@ public class Nucleo implements Runnable{
             if(iniciar){
                 tarea=new Iniciador(monitor);
                 tarea.ejecutar();
-                iniciar=false;
                 establecerTipo();
             }
             iniciar=tarea.ejecutar();
