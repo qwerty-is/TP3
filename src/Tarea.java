@@ -1,3 +1,3 @@
 public interface Tarea {
-    public boolean ejecutar();
+    boolean ejecutar(int[]transiciones, boolean standBy);
 }
