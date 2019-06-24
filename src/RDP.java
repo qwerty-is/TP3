@@ -5,6 +5,10 @@ public class RDP {
 
     private final int FILAS=12;
     private final int COLUMNAS=11;
+    private final long ALFA=0;
+    private final long BETA=0;
+    private final long GAMMA=0;
+
     private int[][] marcadoActual={{1},{0},{0},{0},{1},{0},{0},{0},{1},{0},{0},{1}};
     private int[][] matrizW={
 
@@ -24,10 +28,15 @@ public class RDP {
     };
 
     private BitSet Sensibilizadas;
+    private BitSet Esperando;
+    private long[] tiemposSensibilizados;
+    private long[] tiempos = {0,0,0,ALFA,0,0,BETA,0,0,GAMMA,0,0};
 
     public RDP(){
         Sensibilizadas=new BitSet(COLUMNAS);
+        Esperando=new BitSet(COLUMNAS);
         Sensibilizadas.set(3);
+        Esperando.set(3);
     }
 
     public BitSet getSensibilizadas() {
@@ -38,6 +47,7 @@ public class RDP {
         if(puedoDisparar(transicion)){
             actualizarMarcado(transicion);
             actualizarSensibilizadas();
+            actualizarTiempos();
             return true;
         }
         return false;
@@ -82,6 +92,27 @@ public class RDP {
             resultado[i][0]=vec1[i][0]+vec2[i][0];
         }
         return resultado;
+    }
+
+    public long tiempoRestante(int transicion){
+        long tiempoRestante=tiempos[transicion]-(System.currentTimeMillis()-tiemposSensibilizados[transicion]);
+        return tiempoRestante;
+    }
+
+    private boolean inVentana(int transicion){
+        if(tiempoRestante(transicion)<=0) return true;
+        return false;
+    }
+
+    private void actualizarTiempos(){
+        for(int j=0;j<COLUMNAS;j++){
+            if (Sensibilizadas.get(j)==true&&Esperando.get(j)==false){
+                tiemposSensibilizados[j]=System.currentTimeMillis();
+            }
+            if(Sensibilizadas.get(j))   {Esperando.set(j);}
+            else                        {Esperando.clear(j);}
+        }
+
     }
 
 
