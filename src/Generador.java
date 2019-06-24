@@ -18,7 +18,6 @@ public class Generador implements Runnable{
             while (!monitor.disparar(T)){}
             T=politica.dondeGuardo();
             monitor.disparar(T);
-            monitor.disparar(2);
         }
     }
 }
