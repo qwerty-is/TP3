@@ -20,9 +20,10 @@ public class Nucleo implements Runnable{
         for (int i=0; i<repeticiones; i++){
             if (standBy){
                 tarea=new Iniciar(monitor);
-                tarea.ejecutar(transiciones);
-                tarea=new
+                tarea.ejecutar(transiciones, true);
+                tarea=new Procesar(monitor);
             }
+            standBy=tarea.ejecutar(transiciones, standBy);
         }
 
     }
