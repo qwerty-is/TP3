@@ -13,24 +13,25 @@ public class Monitor {
     private int Lugares_Vacios_2;
     private int Lugares_Ocupados_1;
     private int Lugares_Ocupados_2;
-    private int este;
+    private BitSet opciones;
     private boolean k;
 
-    public Monitor(){
+    public Monitor(Politica politica){
         semaphore=new Semaphore(1,true);
         colas=new ArrayList<>();
-        for(int i=0; i<8; i++){
+        for(int i=0; i<11; i++){
             colas.add(new Semaphore(0, true));
         }
         rdp=new RDP();
-        miPolitica=new Politica();
+        opciones=new BitSet(11);
+        miPolitica=politica;
         Lugares_Vacios_1=10;
         Lugares_Vacios_2=15;
         Lugares_Ocupados_1=0;
         Lugares_Ocupados_2=0;
     }
 
-    public int disparar(int T){
+    public void disparar(int T){
         try {
             semaphore.acquire();
         } catch (InterruptedException e) {
@@ -57,8 +58,8 @@ public class Monitor {
 
                 if(hayHilos()){
 
-                    colas.get(este).release();
-                    return 0;
+                    colas.get(miPolitica.cual(opciones)).release();
+                    return;
                 }
                 k=false;
 
@@ -74,7 +75,7 @@ public class Monitor {
             }
         }
         semaphore.release();
-        return 0;
+        return;
     }
 
     public boolean puedoDisparar(int T){
@@ -86,13 +87,14 @@ public class Monitor {
             return false;
         }
         BitSet sensibilizadas=rdp.getSensibilizadas();
-
-        for(int i=0; i<8; i++){
-            este=i;
+        opciones.clear();
+        for(int i=0; i<11; i++){
             if(sensibilizadas.get(i)&& colas.get(i).hasQueuedThreads()){
-
-                return true;
+                opciones.set(i);
             }
+        }
+        if (!opciones.isEmpty()){
+            return true;
         }
         return false;
     }
