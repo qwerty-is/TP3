@@ -1,7 +1,7 @@
-public class Iniciador implements Tarea {
+public class Iniciar implements Tarea {
     private Monitor monitor;
 
-    public Iniciador(Monitor monitor){
+    public Iniciar(Monitor monitor){
         this.monitor=monitor;
     }
 

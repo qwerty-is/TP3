@@ -1,36 +1,30 @@
 public class Nucleo implements Runnable{
     private int repeticiones;
     private Monitor monitor;
-    private int tipo;
+    private int[] transiciones;
     private Tarea tarea;
-    private boolean iniciar;
+    private boolean standBy;
 
-    public Nucleo(int repeticiones, Monitor monitor, int tipo, boolean iniciar){
+    public Nucleo(int repeticiones, Monitor monitor){
         this.repeticiones=repeticiones;
         this.monitor=monitor;
-        this.tipo=tipo;
-        this.iniciar=iniciar;
-        establecerTipo();
+        standBy=true;
+    }
+
+    public void setTransiciones(int[] transiciones) {
+        this.transiciones = transiciones;
     }
 
     @Override
     public void run(){
         for (int i=0; i<repeticiones; i++){
-            if(iniciar){
-                tarea=new Iniciador(monitor);
-                tarea.ejecutar();
-                establecerTipo();
+            if (standBy){
+                tarea=new Iniciar(monitor);
+                tarea.ejecutar(transiciones);
+                tarea=new
             }
-            iniciar=tarea.ejecutar();
         }
+
     }
 
-    private void establecerTipo(){
-        if (tipo==1){
-            tarea=new CPU1(monitor);
-        }
-        else {
-            tarea=new CPU2(monitor);
-        }
-    }
 }
