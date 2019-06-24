@@ -36,9 +36,6 @@ public class Monitor {
         k=true;
         while(k==true){
 
-            if (!Thread.currentThread().isDaemon()){
-                k=rdp.dispararRed(T);
-            }
 
             if(k==true){
 
