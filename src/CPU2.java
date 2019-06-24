@@ -1,15 +1,15 @@
-public class Core1 implements Tarea {
+public class CPU2 implements Tarea {
     private Monitor monitor;
 
-    public Core1(Monitor monitor){
+    public CPU2(Monitor monitor){
         this.monitor=monitor;
     }
 
     @Override
     public boolean ejecutar(){
-        monitor.disparar(5);
+        monitor.disparar(8);
         monitor.disparar(2);
-        while (!monitor.disparar(6)){}
+        while (!monitor.disparar(9)){}
         if (monitor.puedoDisparar(7)){
             monitor.disparar(7);
             return true;

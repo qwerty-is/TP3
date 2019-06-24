@@ -27,10 +27,10 @@ public class Nucleo implements Runnable{
 
     private void establecerTipo(){
         if (tipo==1){
-            tarea=new Core1(monitor);
+            tarea=new CPU1(monitor);
         }
         else {
-            tarea=new Core2(monitor);
+            tarea=new CPU2(monitor);
         }
     }
 }
