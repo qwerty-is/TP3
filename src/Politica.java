@@ -9,9 +9,9 @@ public class Politica {
 
     public int dondeGuardo(){
         if (Math.random()<0.5){
-            return 1;
+            return 4;
         }
-        return 2;
+        return 10;
     }
 
     public int cualDespierto(BitSet opciones){
