@@ -80,7 +80,7 @@ public class RDP {
             Sensibilizadas.clear(2);
             Sensibilizadas.clear(5);
         }
-        if(marcadoActual[28][8]==0){
+        if(marcadoActual[15][0]==0){
             Sensibilizadas.clear(8);
             Sensibilizadas.clear(11);
         }
