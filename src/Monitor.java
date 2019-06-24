@@ -5,6 +5,7 @@ import java.util.concurrent.Semaphore;
 
 
 public class Monitor {
+    private final int TRANSICIONES=15;
     private Semaphore semaphore;
     private List<Semaphore> colas;
     private RDP rdp;
@@ -15,13 +16,13 @@ public class Monitor {
     private boolean k;
 
     public Monitor(Politica politica){
-        semaphore=new Semaphore(1,false);
+        semaphore=new Semaphore(1,true);
         colas=new ArrayList<>();
-        for(int i=0; i<11; i++){
+        for(int i=0; i<TRANSICIONES; i++){
             colas.add(new Semaphore(0, true));
         }
         rdp=new RDP();
-        opciones=new BitSet(11);
+        opciones=new BitSet(TRANSICIONES);
         miPolitica=politica;
         Tareas_Nucleo_1=0;
         Tareas_Nucleo_2=0;
@@ -36,7 +37,7 @@ public class Monitor {
         k=true;
         while(k==true){
 
-            System.out.println("Hola soy: " + Thread.currentThread().getName() + " y quiero disparar " + (T+2));
+            System.out.println("Hola soy: " + Thread.currentThread().getName() + " y quiero disparar " + T);
             k=rdp.puedoDisparar(T);
             System.out.println("K vale: "+k);
 
@@ -60,7 +61,7 @@ public class Monitor {
                     k=false;
                 }
                 else {
-                    System.out.println("Hola soy: " + Thread.currentThread().getName() + " y llegue antes de la ventana de " + (T+2));
+                    System.out.println("Hola soy: " + Thread.currentThread().getName() + " y llegue antes de la ventana de " + T);
                     semaphore.release();
                     try {
                         Thread.currentThread().sleep(rdp.tiempoRestante(T));
@@ -71,7 +72,7 @@ public class Monitor {
                 }
             }
             else{
-                System.out.println("Hola soy: " + Thread.currentThread().getName() + " y no pude disparar " + (T+2));
+                System.out.println("Hola soy: " + Thread.currentThread().getName() + " y no pude disparar " + T);
                 semaphore.release();
                 try {
                     colas.get(T).acquire();
