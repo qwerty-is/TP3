@@ -3,29 +3,31 @@ import java.util.BitSet;
 
 public class RDP {
 
-    private final int FILAS=10;
-    private final int COLUMNAS=8;
-    private int[][] marcadoActual={{0},{0},{8},{0},{0},{10},{15},{0},{0},{5}};
+    private final int FILAS=12;
+    private final int COLUMNAS=11;
+    private int[][] marcadoActual={{1},{0},{0},{0},{1},{0},{0},{0},{1},{0},{0},{1}};
     private int[][] matrizW={
 
-            {0,	0,	0,	1,	0,	0,	0,	-1},
-            {0,	0,	0,	0,	1,	0,	-1,	0},
-            {0,	0,	0,	-1,	-1,	0,	1,	1},
-            {1,	0,	0,	-1,	0,	0,	0,	0},
-            {0,	0,	0,	0,	-1,	1,	0,	0},
-            {0,	-1,	0,	0,	0,	0,	0,	1},
-            {0,	0,	-1,	0,	0,	0,	1,	0},
-            {-1,1,	0,	0,	0,	0,	0,	0},
-            {0,	0,	1,	0,	0,	-1,	0,	0},
-            {1,	-1,	-1,	0,	0,	1,	0,	0},
+            {-1, 0,	0,	0,	0,	0,	0,	1,	0,	0,	0,},
+            {1,	-1,	0,	0,	0,	0,	0,	0,	0,	0,	0,},
+            {0,	-1,	-1,	0,	1,	0,	0,	0,	0,	0,	1,},
+            {0,	1,	0,	0,	0,	0,	0,	-1,	0,	0,	0,},
+            {0,	0,	0,	-1,	1,	0,	0,	0,	0,	0,	1,},
+            {0,	0,	0,	1,	-1,	0,	0,	0,	0,	0,	-1,},
+            {0,	0,	0,	0,	1,	-1,	0,	0,	0,	0,	0,},
+            {0,	0,	0,	0,	0,	1,	-1,	0,	0,	0,	0,},
+            {0,	0,	0,	0,	0,	-1,	1,	0,	0,	0,	0,},
+            {0,	0,	0,	0,	0,	0,	0,	0,	-1,	0,	1,},
+            {0,	0,	0,	0,	0,	0,	0,	0,	1,	-1,	0,},
+            {0,	0,	0,	0,	0,	0,	0,	0,	-1,	1,	0,},
 
     };
+
     private BitSet Sensibilizadas;
 
     public RDP(){
         Sensibilizadas=new BitSet(COLUMNAS);
-        Sensibilizadas.set(1);
-        Sensibilizadas.set(2);
+        Sensibilizadas.set(3);
     }
 
     public BitSet getSensibilizadas() {
@@ -53,6 +55,10 @@ public class RDP {
                 }
             }
         }
+        if(marcadoActual[6][0]>0||marcadoActual[7][0]>0||marcadoActual[9][0]>0||marcadoActual[10][0]>0)
+        {
+            Sensibilizadas.clear(7);
+        }
     }
 
     public boolean puedoDisparar(int transicion){
@@ -77,5 +83,6 @@ public class RDP {
         }
         return resultado;
     }
+
 
 }
