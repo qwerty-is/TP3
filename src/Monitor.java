@@ -58,7 +58,7 @@ public class Monitor {
 
                 if(hayHilos()){
 
-                    colas.get(miPolitica.cual(opciones)).release();
+                    colas.get(miPolitica.cualDespierto(opciones)).release();
                     return;
                 }
                 k=false;

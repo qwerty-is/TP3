@@ -7,7 +7,14 @@ public class Politica {
         prioridades= new int[]{5, 8, 4, 10, 3, 6, 9, 0, 1, 2, 7};
     }
 
-    public int cual(BitSet opciones){
+    public int dondeGuardo(){
+        if (Math.random()<0.5){
+            return 1;
+        }
+        return 2;
+    }
+
+    public int cualDespierto(BitSet opciones){
         for(int i=0; i<10; i++){
             if(opciones.get(prioridades[i])){
                 return prioridades[i];
