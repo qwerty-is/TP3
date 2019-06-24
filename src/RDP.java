@@ -76,6 +76,10 @@ public class RDP {
         if(marcadoActual[2][0]==0){
             Sensibilizadas.clear(0);
         }
+        if(marcadoActual[13][0]==0){
+            Sensibilizadas.clear(12);
+        }
+
         if(marcadoActual[3][0]==0){
             Sensibilizadas.clear(2);
             Sensibilizadas.clear(5);
