@@ -3,34 +3,38 @@ import java.util.BitSet;
 
 public class RDP {
 
-    private final int FILAS=12;
-    private final int COLUMNAS=11;
+    private final int FILAS=16;
+    private final int COLUMNAS=15;
     private final long ALFA=10;
     private final long BETA=10;
     private final long GAMMA=10;
 
-    private int[][] marcadoActual={{1},{0},{0},{0},{1},{0},{0},{0},{1},{0},{0},{1}};
+    private int[][] marcadoActual={{1},{0},{0},{0},{1},{0},{0},{0},{1},{0},{0},{1},{1},{0},{0},{0}};
     private int[][] matrizW={
 
-            {-1, 0,	0,	0,	0,	0,	0,	1,	0,	0,	0,},
-            {1,	-1,	0,	0,	0,	0,	0,	0,	0,	0,	0,},
-            {0,	-1,	-1,	0,	1,	0,	0,	0,	0,	0,	1,},
-            {0,	1,	0,	0,	0,	0,	0,	-1,	0,	0,	0,},
-            {0,	0,	0,	-1,	1,	0,	0,	0,	0,	0,	1,},
-            {0,	0,	0,	1,	-1,	0,	0,	0,	0,	0,	-1,},
-            {0,	0,	0,	0,	1,	-1,	0,	0,	0,	0,	0,},
-            {0,	0,	0,	0,	0,	1,	-1,	0,	0,	0,	0,},
-            {0,	0,	0,	0,	0,	-1,	1,	0,	0,	0,	0,},
-            {0,	0,	0,	0,	0,	0,	0,	0,	-1,	0,	1,},
-            {0,	0,	0,	0,	0,	0,	0,	0,	1,	-1,	0,},
-            {0,	0,	0,	0,	0,	0,	0,	0,	-1,	1,	0,},
+            {-1,0,	0,	0,	0,	0,	0,	1,	0,	0,	0,	0,	0,	0,	0},
+            {1,	-1,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0},
+            {0,	-1,	-1,	0,	1,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0},
+            {0,	1,	0,	0,	0,	0,	0,	-1,	0,	0,	0,	0,	0,	0,	0},
+            {0,	0,	0,	-1,	1,	0,	0,	0,	0,	0,	1,	0,	0,	0,	0},
+            {0,	0,	0,	1,	-1,	0,	0,	0,	0,	0,	-1,	0,	0,	0,	0},
+            {0,	0,	0,	0,	1,	-1,	0,	0,	0,	0,	0,	0,	0,	0,	0},
+            {0,	0,	0,	0,	0,	1,	-1,	0,	0,	0,	0,	0,	0,	0,	0},
+            {0,	0,	0,	0,	0,	-1,	1,	0,	0,	0,	0,	0,	0,	0,	0},
+            {0,	0,	0,	0,	0,	0,	0,	0,	-1,	0,	1,	0,	0,	0,	0},
+            {0,	0,	0,	0,	0,	0,	0,	0,	1,	-1,	0,	0,	0,	0,	0},
+            {0,	0,	0,	0,	0,	0,	0,	0,	-1,	1,	0,	0,	0,	0,	0},
+            {0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	-1,	0,	1},
+            {0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	1,	-1,	0,	-1,	0},
+            {0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	1,	-1,	0},
+            {0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	1,	-1},
 
     };
 
     private BitSet Sensibilizadas;
     private BitSet Esperando;
-    private long[] tiemposSensibilizados = {0,0,0,0,0,0,0,0,0,0,0};
-    private long[] tiempos = {0,0,0,ALFA,0,0,BETA,0,0,GAMMA,0,0};
+    private long[] tiemposSensibilizados = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+    private long[] tiempos = {0,0,0,ALFA,0,0,BETA,0,0,GAMMA,0,0,0,0,0};
 
     public RDP(){
         Sensibilizadas=new BitSet(COLUMNAS);
@@ -62,9 +66,12 @@ public class RDP {
                 }
             }
         }
-        if(marcadoActual[6][0]>0||marcadoActual[7][0]>0||marcadoActual[9][0]>0||marcadoActual[10][0]>0)
+        if(marcadoActual[6][0]>0||marcadoActual[7][0]>0)
         {
             Sensibilizadas.clear(7);
+        }
+        if(marcadoActual[9][0]>0||marcadoActual[10][0]>0){
+            Sensibilizadas.clear(14);
         }
         if(marcadoActual[2][0]==0){
             Sensibilizadas.clear(0);
@@ -72,7 +79,10 @@ public class RDP {
         if(marcadoActual[3][0]==0){
             Sensibilizadas.clear(2);
             Sensibilizadas.clear(5);
+        }
+        if(marcadoActual[28][8]==0){
             Sensibilizadas.clear(8);
+            Sensibilizadas.clear(11);
         }
 
     }
