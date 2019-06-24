@@ -1,19 +1,8 @@
-public class CPU2 implements Tarea {
+public class CPU2 extends Nucleo {
     private Monitor monitor;
 
-    public CPU2(Monitor monitor){
-        this.monitor=monitor;
+    public CPU2(int repeticiones, Monitor monitor, int tipo, boolean iniciar){
+        super(repeticiones, monitor, tipo, iniciar);
     }
 
-    @Override
-    public boolean ejecutar(){
-        monitor.disparar(8);
-        monitor.disparar(2);
-        while (!monitor.disparar(9)){}
-        if (monitor.puedoDisparar(7)){
-            monitor.disparar(7);
-            return true;
-        }
-        return false;
-    }
 }
