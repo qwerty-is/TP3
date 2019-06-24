@@ -4,19 +4,19 @@ public class Main {
 
         Politica politica=new Politica();
         Monitor monitor=new Monitor(politica);
-        Nucleo nucleo1=new Nucleo(1000, monitor, 1, true);
-        Nucleo nucleo2=new Nucleo(1000, monitor, 2, false);
+        Nucleo core1=new CPU1(1000, monitor);
+        Nucleo core2=new CPU2(1000, monitor);
         Generador generador= new Generador(1000, monitor, politica);
         MyThreadFactory factory=new MyThreadFactory("procesador");
 
         Control log=new Control(monitor,"Ejecucion");
 
         Thread gen=factory.newThread(generador);
-        Thread n1=factory.newThread(nucleo1);
-        Thread n2=factory.newThread(nucleo2);
+        Thread n1=factory.newThread(core1);
+        Thread n2=factory.newThread(core2);
         Thread con=factory.newThread(log);
 
-        con.start();
+        //con.start();
         gen.start();
         n1.start();
         n2.start();
