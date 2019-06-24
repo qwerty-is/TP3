@@ -43,14 +43,11 @@ public class RDP {
         return Sensibilizadas;
     }
 
-    public boolean dispararRed(int transicion){
-        if(puedoDisparar(transicion)){
-            actualizarMarcado(transicion);
-            actualizarSensibilizadas();
-            actualizarTiempos();
-            return true;
-        }
-        return false;
+    public dispararRed(int transicion){
+        actualizarMarcado(transicion);
+        actualizarSensibilizadas();
+        actualizarTiempos();
+
     }
 
     private void actualizarSensibilizadas(){
@@ -99,7 +96,7 @@ public class RDP {
         return tiempoRestante;
     }
 
-    private boolean inVentana(int transicion){
+    public boolean inVentana(int transicion){
         if(tiempoRestante(transicion)<=0) return true;
         return false;
     }
