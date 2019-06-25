@@ -48,7 +48,7 @@ public class Control implements Runnable{
         logger.log(Level.INFO, mensaje);
 
         try {
-            Thread.currentThread().sleep(2000);
+            Thread.currentThread().sleep(500);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

@@ -19,6 +19,7 @@ public class Main {
         Thread con=factory.newThread(log);
 
         long tinicio=System.currentTimeMillis();
+
         con.start();
         gen.start();
         n1.start();
@@ -30,14 +31,14 @@ public class Main {
             e.printStackTrace();
         }
 
-        System.out.println("Tiempo requerido: " + (System.currentTimeMillis()-tinicio));
-        try {
+        //System.out.println("Tiempo requerido: " + (System.currentTimeMillis()-tinicio));
+        /*try {
             Thread.currentThread().sleep(2000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
 
-        log.setEstado("Fin");
+        log.setEstado("Fin");*/
 
     }
 
