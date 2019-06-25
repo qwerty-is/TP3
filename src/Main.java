@@ -30,6 +30,7 @@ public class Main {
             e.printStackTrace();
         }
 
+        System.out.println("Tiempo requerido: " + (System.currentTimeMillis()-tinicio));
         try {
             Thread.currentThread().sleep(2000);
         } catch (InterruptedException e) {
@@ -37,7 +38,6 @@ public class Main {
         }
 
         log.setEstado("Fin");
-        System.out.println("Tiempo requerido: " + (System.currentTimeMillis()-tinicio));
 
     }
 
