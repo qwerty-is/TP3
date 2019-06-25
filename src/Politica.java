@@ -12,7 +12,7 @@ public class Politica {
     }
 
     public int dondeGuardo(){
-        if (Math.random()<PROBABILIDAD){
+        if (Math.random()<=PROBABILIDAD){
             return buffer_CPU1;
         }
         return buffer_CPU2;
