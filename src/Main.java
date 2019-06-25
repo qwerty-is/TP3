@@ -16,7 +16,8 @@ public class Main {
         Thread n2=factory.newThread(core2);
         Thread con=factory.newThread(log);
 
-        //con.start();
+        long tdeinicio=System.currentTimeMillis();
+        con.start();
         gen.start();
         n1.start();
         n2.start();
@@ -26,7 +27,7 @@ public class Main {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
+        System.out.println("Tarde: " + (System.currentTimeMillis()-tdeinicio));
         try {
             Thread.currentThread().sleep(2000);
         } catch (InterruptedException e) {
