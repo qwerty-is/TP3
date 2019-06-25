@@ -13,7 +13,7 @@
             <x>-229</x>
             <y>-321</y>
             <label>Stand_By_1</label>
-            <tokens>0</tokens>
+            <tokens>1</tokens>
             <isStatic>false</isStatic>
         </place>
         <place>
@@ -37,7 +37,7 @@
             <x>141</x>
             <y>-206</y>
             <label>CPU_1_ON</label>
-            <tokens>1</tokens>
+            <tokens>0</tokens>
             <isStatic>false</isStatic>
         </place>
         <place>
@@ -69,7 +69,7 @@
             <x>194</x>
             <y>-91</y>
             <label>Active_1</label>
-            <tokens>1</tokens>
+            <tokens>0</tokens>
             <isStatic>false</isStatic>
         </place>
         <place>
@@ -77,7 +77,7 @@
             <x>193</x>
             <y>26</y>
             <label>Idle_1</label>
-            <tokens>0</tokens>
+            <tokens>1</tokens>
             <isStatic>false</isStatic>
         </place>
         <place>
