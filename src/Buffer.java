@@ -41,4 +41,7 @@ public class Buffer extends Thread {
         return false;
     }
 
+    synchronized public int getCantidad() {
+        return cantidad;
+    }
 }

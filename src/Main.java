@@ -11,7 +11,7 @@ public class Main {
         Generador generador= new Generador(1000, buffer1, buffer2, monitor, politica);
         MyThreadFactory factory=new MyThreadFactory("procesador");
 
-        Control log=new Control(monitor,"Ejecucion");
+        Control log=new Control(monitor, buffer1, buffer2, "Ejecucion");
 
         Thread gen=factory.newThread(generador);
         Thread n1=factory.newThread(core1);
