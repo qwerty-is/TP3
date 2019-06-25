@@ -6,8 +6,9 @@ public class Procesar implements Tarea {
     }
 
     @Override
-    public boolean ejecutar(int[] transiciones, boolean standBy) {
+    public boolean ejecutar(int[] transiciones, Buffer miBuffer, boolean standBy) {
         monitor.disparar(transiciones[2]);
+        miBuffer.remove();
         if(!standBy){
             monitor.disparar(transiciones[3]);
         }

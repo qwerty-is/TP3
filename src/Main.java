@@ -4,9 +4,11 @@ public class Main {
 
         Politica politica=new Politica();
         Monitor monitor=new Monitor(politica);
-        Nucleo core1=new CPU1(1000, monitor);
-        Nucleo core2=new CPU2(1000, monitor);
-        Generador generador= new Generador(1000, monitor, politica);
+        Buffer buffer1=new Buffer();
+        Buffer buffer2=new Buffer();
+        Nucleo core1=new CPU1(1000, buffer1, monitor);
+        Nucleo core2=new CPU2(1000, buffer2, monitor);
+        Generador generador= new Generador(1000, buffer1, buffer2, monitor, politica);
         MyThreadFactory factory=new MyThreadFactory("procesador");
 
         Control log=new Control(monitor,"Ejecucion");

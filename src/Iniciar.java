@@ -6,7 +6,7 @@ public class Iniciar implements Tarea {
     }
 
     @Override
-    public boolean ejecutar(int[] transiciones, boolean standBy){
+    public boolean ejecutar(int[] transiciones, Buffer miBuffer, boolean standBy){
         monitor.disparar(transiciones[0]);
         monitor.disparar(transiciones[1]);
         return true;
