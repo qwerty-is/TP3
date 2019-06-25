@@ -2,13 +2,13 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 
-public class Buffer extends Thread {
+public class Buffer {
 
-    private Queue<Integer> m;
-    int cantidad;
+    private Queue<Integer> queue;
+    private int cantidad;
 
     public Buffer() {
-        this.m = new LinkedList<>();
+        this.queue = new LinkedList<>();
         this.cantidad = 0;
     }
 
@@ -22,13 +22,13 @@ public class Buffer extends Thread {
     synchronized public boolean add() {
         Integer e=1;
         cantidad++;
-        return m.add(e);
+        return queue.add(e);
     }
 
     synchronized public boolean remove() {
         if(puedoSacar()){
             cantidad--;
-            m.remove();
+            queue.remove();
             return true;
         }
         return false;
