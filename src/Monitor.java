@@ -54,6 +54,7 @@ public class Monitor {
                     }
 
                     if(hayHilos()){
+                        System.out.println("Vengo a despertar");
                         colas.get(miPolitica.cualDespierto(opciones)).release();
                         return true;
                     }
@@ -87,7 +88,22 @@ public class Monitor {
     }
 
     public boolean puedoDisparar(int T){
-        return rdp.puedoDisparar(T);
+        try {
+            semaphore.acquire();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        if(rdp.puedoDisparar(T)){
+            rdp.dispararRed(T);
+            if (hayHilos()){
+                colas.get(miPolitica.cualDespierto(opciones)).release();
+            }
+            else { semaphore.release();}
+            return true;
+        }
+        semaphore.release();
+        return false;
+
     }
 
     private boolean hayHilos(){
@@ -96,7 +112,7 @@ public class Monitor {
         }
         BitSet sensibilizadas=rdp.getSensibilizadas();
         opciones.clear();
-        for(int i=0; i<11; i++){
+        for(int i=0; i<TRANSICIONES; i++){
             if(sensibilizadas.get(i)&& colas.get(i).hasQueuedThreads()){
                 opciones.set(i);
             }
@@ -109,7 +125,7 @@ public class Monitor {
 
     private int largoColas(){
         int ret=0;
-        for(int i=0; i<8; i++){
+        for(int i=0; i<TRANSICIONES; i++){
             ret=ret+colas.get(i).getQueueLength();
         }
         return ret;

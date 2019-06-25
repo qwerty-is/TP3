@@ -11,11 +11,7 @@ public class Procesar implements Tarea {
         if(!standBy){
             monitor.disparar(transiciones[3]);
         }
-        monitor.disparar(transiciones[4]);
-        if (monitor.puedoDisparar(transiciones[5])){
-            monitor.disparar(transiciones[5]);
-            return true;
-        }
-        return false;
+        while (!monitor.disparar(transiciones[4])){}
+        return monitor.puedoDisparar(transiciones[5]);
     }
 }
