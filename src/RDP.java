@@ -5,7 +5,7 @@ public class RDP {
 
     private final int FILAS=16;
     private final int COLUMNAS=15;
-    private final long ALFA=10;
+    private final long ALFA=5;
     private final long BETA=10;
     private final long GAMMA=10;
 
