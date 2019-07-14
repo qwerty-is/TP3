@@ -56,8 +56,8 @@ public class Control extends Thread{
 
     @Override
     public void run() {
-        logger.log(Level.INFO, "INICIO");
         long tdeinicio=System.currentTimeMillis();
+        logger.log(Level.INFO, "INICIO");
         while(estado.equals("Ejecucion")) {
             escribir();
         }

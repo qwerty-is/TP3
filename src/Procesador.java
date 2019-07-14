@@ -61,7 +61,7 @@ public class Procesador {
         String[] retorno=new String[2];
 
         stats=/*monitor.estadisticas() +*/ "\nActividades generadas= " + (buf1.getActGeneradas()+buf2.getActGeneradas())
-                +"\nActividades realizadas cpu= " + buf1.getActRealizadas()
+                +"\nActividades realizadas cpu1= " + buf1.getActRealizadas()
                 +"\nActividades realizadas cpu2= " + buf2.getActRealizadas();
 
         int realizadas=buf1.getActRealizadas()+ buf2.getActRealizadas();
