@@ -7,8 +7,8 @@ public class Procesador {
     private Generador gen;
     private Buffer buf1;
     private Buffer buf2;
-    private CPU1 cpu1;
-    private CPU2 cpu2;
+    private CPU cpu1;
+    private CPU cpu2;
     private GarbageCollector collector1;
     private GarbageCollector collector2;
     private Iniciador iniciador1;
@@ -24,8 +24,8 @@ public class Procesador {
         buf1=new Buffer();
         buf2=new Buffer();
         gen=new Generador(REPETICIONES, monitor, miPolitica, buf1, buf2);
-        cpu1=new CPU1(monitor, buf1);
-        cpu2=new CPU2(monitor,buf2);
+        cpu1=new CPU(monitor, buf1, 1);
+        cpu2=new CPU(monitor, buf2, 2);
         iniciador1=new Iniciador(monitor,1);
         iniciador2=new Iniciador(monitor,2);
         collector1=new GarbageCollector(1, monitor);
@@ -61,7 +61,7 @@ public class Procesador {
         String[] retorno=new String[2];
 
         stats=/*monitor.estadisticas() +*/ "\nActividades generadas= " + (buf1.getActGeneradas()+buf2.getActGeneradas())
-                +"\nActividades realizadas cpu1= " + buf1.getActRealizadas()
+                +"\nActividades realizadas cpu= " + buf1.getActRealizadas()
                 +"\nActividades realizadas cpu2= " + buf2.getActRealizadas();
 
         int realizadas=buf1.getActRealizadas()+ buf2.getActRealizadas();

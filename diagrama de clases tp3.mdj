@@ -1061,7 +1061,7 @@
 											"top": 23,
 											"width": 273.47607421875,
 											"height": 13,
-											"text": "CPU1"
+											"text": "CPU"
 										},
 										{
 											"_type": "LabelView",
@@ -1167,7 +1167,7 @@
 											"top": 69,
 											"width": 273.47607421875,
 											"height": 13,
-											"text": "+public CPU1(int repeticiones, Monitor monitor)",
+											"text": "+public CPU(int repeticiones, Monitor monitor)",
 											"horizontalAlignment": 0
 										}
 									],
@@ -9648,7 +9648,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "CPU1",
+					"name": "CPU",
 					"ownedElements": [
 						{
 							"_type": "UMLGeneralization",
@@ -9682,7 +9682,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFri6y+dQtwreM="
 							},
-							"name": "public CPU1",
+							"name": "public CPU",
 							"parameters": [
 								{
 									"_type": "UMLParameter",
@@ -11607,7 +11607,7 @@
 													"top": 47,
 													"width": 87.30810546875,
 													"height": 13,
-													"text": "core1: CPU1"
+													"text": "core1: CPU"
 												},
 												{
 													"_type": "LabelView",

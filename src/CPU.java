@@ -1,13 +1,15 @@
 
-public class CPU2 implements Runnable {
+public class CPU implements Runnable {
     private Monitor monitor;
     private Buffer miBuffer;
-    private final int T1=8;
-    private final int T2=9;
+    private int T1;
+    private int T2;
 
-    public CPU2(Monitor monitor, Buffer miBuffer){
+    public CPU(Monitor monitor, Buffer miBuffer, int tipo){
         this.monitor=monitor;
         this.miBuffer=miBuffer;
+        if (tipo==1){ T1=5; T2=6;}
+        else { T1=8; T2=9;}
     }
 
     public void run(){

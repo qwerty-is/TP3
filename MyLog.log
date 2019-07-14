@@ -455,3 +455,97 @@ INFORMACIÓN: FIN
 jul 14, 2019 1:22:08 PM Control run
 INFORMACIÓN: 
 Tiempo de ejecucion: 18002
+jul 14, 2019 1:27:48 PM Control run
+INFORMACIÓN: INICIO
+jul 14, 2019 1:27:48 PM Control escribir
+INFORMACIÓN: 
+Actividades generadas= 2
+Actividades realizadas cpu1= 1
+Actividades realizadas cpu2= 1
+jul 14, 2019 1:27:50 PM Control escribir
+INFORMACIÓN: 
+Actividades generadas= 129
+Actividades realizadas cpu1= 65
+Actividades realizadas cpu2= 64
+jul 14, 2019 1:27:52 PM Control escribir
+INFORMACIÓN: 
+Actividades generadas= 257
+Actividades realizadas cpu1= 123
+Actividades realizadas cpu2= 134
+jul 14, 2019 1:27:54 PM Control escribir
+INFORMACIÓN: 
+Actividades generadas= 385
+Actividades realizadas cpu1= 188
+Actividades realizadas cpu2= 197
+jul 14, 2019 1:27:56 PM Control escribir
+INFORMACIÓN: 
+Actividades generadas= 513
+Actividades realizadas cpu1= 249
+Actividades realizadas cpu2= 264
+jul 14, 2019 1:27:58 PM Control escribir
+INFORMACIÓN: 
+Actividades generadas= 641
+Actividades realizadas cpu1= 312
+Actividades realizadas cpu2= 329
+jul 14, 2019 1:28:00 PM Control escribir
+INFORMACIÓN: 
+Actividades generadas= 768
+Actividades realizadas cpu1= 367
+Actividades realizadas cpu2= 401
+jul 14, 2019 1:28:02 PM Control escribir
+INFORMACIÓN: 
+Actividades generadas= 896
+Actividades realizadas cpu1= 438
+Actividades realizadas cpu2= 458
+jul 14, 2019 1:28:04 PM Control escribir
+INFORMACIÓN: 
+Actividades generadas= 1000
+Actividades realizadas cpu1= 495
+Actividades realizadas cpu2= 505
+jul 14, 2019 1:28:06 PM Control run
+INFORMACIÓN: FIN
+jul 14, 2019 1:28:06 PM Control run
+INFORMACIÓN: 
+Tiempo de ejecucion: 18015
+jul 14, 2019 3:34:53 PM Control run
+INFORMACIÓN: INICIO
+jul 14, 2019 3:34:53 PM Control escribir
+INFORMACIÓN: 
+Actividades generadas= 17
+Actividades realizadas cpu= 8
+Actividades realizadas cpu2= 9
+jul 14, 2019 3:34:55 PM Control escribir
+INFORMACIÓN: 
+Actividades generadas= 193
+Actividades realizadas cpu= 86
+Actividades realizadas cpu2= 107
+jul 14, 2019 3:34:57 PM Control escribir
+INFORMACIÓN: 
+Actividades generadas= 292
+Actividades realizadas cpu= 137
+Actividades realizadas cpu2= 155
+jul 14, 2019 3:34:59 PM Control escribir
+INFORMACIÓN: 
+Actividades generadas= 478
+Actividades realizadas cpu= 234
+Actividades realizadas cpu2= 244
+jul 14, 2019 3:35:01 PM Control escribir
+INFORMACIÓN: 
+Actividades generadas= 659
+Actividades realizadas cpu= 331
+Actividades realizadas cpu2= 328
+jul 14, 2019 3:35:03 PM Control escribir
+INFORMACIÓN: 
+Actividades generadas= 837
+Actividades realizadas cpu= 421
+Actividades realizadas cpu2= 416
+jul 14, 2019 3:35:05 PM Control escribir
+INFORMACIÓN: 
+Actividades generadas= 1000
+Actividades realizadas cpu= 491
+Actividades realizadas cpu2= 509
+jul 14, 2019 3:35:07 PM Control run
+INFORMACIÓN: FIN
+jul 14, 2019 3:35:07 PM Control run
+INFORMACIÓN: 
+Tiempo de ejecucion: 14053
