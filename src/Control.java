@@ -7,19 +7,22 @@ import java.util.logging.SimpleFormatter;
 
 
 
-public class Control implements Runnable{
+public class Control extends Thread{
 
-    private Monitor miMonitor;
-    private String mensaje;
+    private Procesador procesador;
+    private String[] mensaje;
+    private String stats;
     private String estado;
     private final static Logger logger = Logger.getLogger("ControlBuffer");
 
-    public Control(Monitor m, String estado) {
+    public Control(Procesador procesador, String estado) {
+
+        mensaje=new String[2];
         this.estado=estado;
-        miMonitor=m;
+        this.procesador=procesador;
 
         try {
-            Handler fileHandler = new FileHandler("C:\\Users\\Nico\\Documents\\Programación Concurrente\\TP1\\TP1 Concurrente\\MyLog.log", true);
+            Handler fileHandler = new FileHandler("C:\\Users\\nicoc\\IdeaProjects\\TP3\\MyLog.log", true);
 
             SimpleFormatter simpleFormatter = new SimpleFormatter();
 
@@ -37,8 +40,12 @@ public class Control implements Runnable{
     }
 
     private void escribir() {
-        mensaje=miMonitor.estadisticas();
-        logger.log(Level.INFO, mensaje);
+
+        mensaje=procesador.getStats();
+        stats=mensaje[0];
+        estado=mensaje[1];
+
+        logger.log(Level.INFO, stats);
 
         try {
             Thread.currentThread().sleep(2000);
@@ -47,17 +54,15 @@ public class Control implements Runnable{
         }
     }
 
-    public void setEstado(String estado) {
-        this.estado = estado;
-    }
-
     @Override
     public void run() {
         logger.log(Level.INFO, "INICIO");
+        long tdeinicio=System.currentTimeMillis();
         while(estado.equals("Ejecucion")) {
             escribir();
         }
         logger.log(Level.INFO, "FIN");
+        logger.log(Level.INFO, ("\nTiempo de ejecucion: " + (System.currentTimeMillis()-tdeinicio)));
     }
 
 

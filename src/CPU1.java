@@ -1,9 +1,20 @@
 
-public class CPU1 extends Nucleo {
-    private int[] transiciones={0,1,5,2,6,7};
+public class CPU1 implements Runnable {
+    private Monitor monitor;
+    private Buffer miBuffer;
+    private final int T1=5;
+    private final int T2=6;
 
-    public CPU1(int repeticiones, Monitor monitor){
-        super(repeticiones, monitor);
-        super.setTransiciones(transiciones);
+    public CPU1(Monitor monitor, Buffer miBuffer){
+        this.monitor=monitor;
+        this.miBuffer=miBuffer;
+    }
+
+    public void run(){
+        while (true){
+            monitor.disparar(T1);
+            miBuffer.remove();
+            while (!monitor.disparar(T2)){}
+        }
     }
 }

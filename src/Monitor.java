@@ -10,8 +10,6 @@ public class Monitor {
     private List<Semaphore> colas;
     private RDP rdp;
     private Politica miPolitica;
-    private int Tareas_Nucleo_2;
-    private int Tareas_Nucleo_1;
     private BitSet opciones;
     private boolean k;
 
@@ -23,9 +21,7 @@ public class Monitor {
         }
         rdp=new RDP();
         opciones=new BitSet(TRANSICIONES);
-        miPolitica=politica;
-        Tareas_Nucleo_1=0;
-        Tareas_Nucleo_2=0;
+        miPolitica=politica;;
     }
 
     public boolean disparar(int T){
@@ -42,14 +38,6 @@ public class Monitor {
             if(k==true){
                 if (rdp.inVentana(T)){
                     rdp.dispararRed(T);
-
-                    switch(T){
-                        case 4: Tareas_Nucleo_1++;   break;
-                        case 5: Tareas_Nucleo_1--;   break;
-                        case 8: Tareas_Nucleo_2++;   break;
-                        case 10: Tareas_Nucleo_2--;   break;
-                        default:                        break;
-                    }
 
                     if(hayHilos()){
                         colas.get(miPolitica.cualDespierto(opciones)).release();
@@ -82,25 +70,6 @@ public class Monitor {
         return true;
     }
 
-    public boolean puedoDisparar(int T){
-        try {
-            semaphore.acquire();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        if(rdp.puedoDisparar(T)){
-            rdp.dispararRed(T);
-            if (hayHilos()){
-                colas.get(miPolitica.cualDespierto(opciones)).release();
-            }
-            else { semaphore.release();}
-            return true;
-        }
-        semaphore.release();
-        return false;
-
-    }
-
     private boolean hayHilos(){
         if(largoColas()==0){
             return false;
@@ -128,10 +97,15 @@ public class Monitor {
 
 
     public String estadisticas (){
+        try {
+            semaphore.acquire();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         String stats;
-        stats="\nTareas en espera del nucleo1: " + Tareas_Nucleo_1 + "\nTareas en espera del nucleo2: " + Tareas_Nucleo_2
-                + "\nHilos en las colas de espera: " + largoColas()
+        stats="\nHilos en las colas de espera: " + largoColas()
                 + "\nHilos en espera del mutex: " + semaphore.getQueueLength();
+        semaphore.release();
         return stats;
 
     }
