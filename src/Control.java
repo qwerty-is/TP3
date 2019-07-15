@@ -39,27 +39,25 @@ public class Control extends Thread{
 
     }
 
-    private void escribir() {
-
-        mensaje=procesador.getStats();
-        stats=mensaje[0];
-        estado=mensaje[1];
-
-        logger.log(Level.INFO, stats);
-
-        try {
-            Thread.currentThread().sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
 
     @Override
     public void run() {
         long tdeinicio=System.currentTimeMillis();
         logger.log(Level.INFO, "INICIO");
         while(estado.equals("Ejecucion")) {
-            escribir();
+            mensaje=procesador.getStats();
+            stats=mensaje[0];
+            estado=mensaje[1];
+
+            logger.log(Level.INFO, stats);
+
+            if (estado.equals("Ejecucion")){
+                try {
+                    Thread.currentThread().sleep(2000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
         }
         logger.log(Level.INFO, "FIN");
         logger.log(Level.INFO, ("\nTiempo de ejecucion: " + (System.currentTimeMillis()-tdeinicio)));

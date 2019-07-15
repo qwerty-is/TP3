@@ -43,8 +43,6 @@ public class Procesador {
         threads[4]=factory.newThread(iniciador2);
         threads[5]=factory.newThread(collector1);
         threads[6]=factory.newThread(collector2);
-
-
     }
 
     public int getCANTIDADHILOS() {

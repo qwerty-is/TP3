@@ -96,7 +96,7 @@ public class Monitor {
     }
 
 
-    public String estadisticas (){
+    /*public String estadisticas (){
         try {
             semaphore.acquire();
         } catch (InterruptedException e) {
@@ -108,6 +108,6 @@ public class Monitor {
         semaphore.release();
         return stats;
 
-    }
+    }*/
 
 }
