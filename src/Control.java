@@ -11,7 +11,6 @@ public class Control extends Thread{
 
     private Procesador procesador;
     private String[] mensaje;
-    private String stats;
     private String estado;
     private final static Logger logger = Logger.getLogger("ControlBuffer");
 
@@ -46,14 +45,14 @@ public class Control extends Thread{
         logger.log(Level.INFO, "INICIO");
         while(estado.equals("Ejecucion")) {
             mensaje=procesador.getStats();
-            stats=mensaje[0];
+            String stats = mensaje[0];
             estado=mensaje[1];
 
             logger.log(Level.INFO, stats);
 
             if (estado.equals("Ejecucion")){
                 try {
-                    Thread.currentThread().sleep(2000);
+                    sleep(2000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }

@@ -1,9 +1,7 @@
-public class Procesador {
+class Procesador {
 
     private final int CANTIDADHILOS=7;
     private final int REPETICIONES=1000;
-    private Politica miPolitica;
-    private Monitor monitor;
     private Generador gen;
     private Buffer buf1;
     private Buffer buf2;
@@ -13,14 +11,14 @@ public class Procesador {
     private GarbageCollector collector2;
     private Iniciador iniciador1;
     private Iniciador iniciador2;
-    private Thread threads[];
+    private Thread[] threads;
     private MyThreadFactory factory;
 
-    public Procesador (){
+    Procesador(){
         threads=new Thread[CANTIDADHILOS];
         factory=new MyThreadFactory("procesador");
-        miPolitica=new Politica();
-        monitor=new Monitor(miPolitica);
+        Politica miPolitica = new Politica();
+        Monitor monitor = new Monitor(miPolitica);
         buf1=new Buffer();
         buf2=new Buffer();
         gen=new Generador(REPETICIONES, monitor, miPolitica, buf1, buf2);
@@ -45,15 +43,15 @@ public class Procesador {
         threads[6]=factory.newThread(collector2);
     }
 
-    public int getCANTIDADHILOS() {
+    int getCANTIDADHILOS() {
         return CANTIDADHILOS;
     }
 
-    public Thread[] getThreads(){
+    Thread[] getThreads(){
         return threads;
     }
 
-    public String[] getStats(){
+    String[] getStats(){
         String stats;
         String estado="Ejecucion";
         String[] retorno=new String[2];

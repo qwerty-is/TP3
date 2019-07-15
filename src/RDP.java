@@ -43,11 +43,11 @@ public class RDP {
         actualizarTiempos();
     }
 
-    public BitSet getSensibilizadas() {
+    BitSet getSensibilizadas() {
         return Sensibilizadas;
     }
 
-    public void dispararRed(int transicion){
+    void dispararRed(int transicion){
         actualizarMarcado(transicion);
         actualizarSensibilizadas();
         actualizarTiempos();
@@ -91,7 +91,7 @@ public class RDP {
 
     }
 
-    public boolean puedoDisparar(int transicion){
+    boolean puedoDisparar(int transicion){
         return Sensibilizadas.get(transicion);
     }
 
@@ -114,19 +114,17 @@ public class RDP {
         return resultado;
     }
 
-    public long tiempoRestante(int transicion){
-        long tiempoRestante=tiempos[transicion]-(System.currentTimeMillis()-tiemposSensibilizados[transicion]);
-        return tiempoRestante;
+    long tiempoRestante(int transicion){
+        return tiempos[transicion]-(System.currentTimeMillis()-tiemposSensibilizados[transicion]);
     }
 
-    public boolean inVentana(int transicion){
-        if(tiempoRestante(transicion)<=0) return true;
-        return false;
+    boolean inVentana(int transicion){
+        return tiempoRestante(transicion) <= 0;
     }
 
     private void actualizarTiempos(){
         for(int j=0;j<COLUMNAS;j++){
-            if (Sensibilizadas.get(j)==true&&Esperando.get(j)==false){
+            if (Sensibilizadas.get(j) && !Esperando.get(j)){
                 tiemposSensibilizados[j]=System.currentTimeMillis();
             }
             if(Sensibilizadas.get(j))   {Esperando.set(j);}

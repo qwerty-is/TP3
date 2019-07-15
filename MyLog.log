@@ -1458,3 +1458,60 @@ INFORMACIÓN: FIN
 jul 14, 2019 10:46:44 PM Control run
 INFORMACIÓN: 
 Tiempo de ejecucion: 18125
+jul 14, 2019 11:01:30 PM Control run
+INFORMACIÓN: INICIO
+jul 14, 2019 11:01:30 PM Control run
+INFORMACIÓN: 
+Actividades generadas= 2
+Actividades realizadas cpu1= 0
+Actividades realizadas cpu2= 2
+jul 14, 2019 11:01:32 PM Control run
+INFORMACIÓN: 
+Actividades generadas= 114
+Actividades realizadas cpu1= 50
+Actividades realizadas cpu2= 64
+jul 14, 2019 11:01:34 PM Control run
+INFORMACIÓN: 
+Actividades generadas= 228
+Actividades realizadas cpu1= 92
+Actividades realizadas cpu2= 136
+jul 14, 2019 11:01:36 PM Control run
+INFORMACIÓN: 
+Actividades generadas= 339
+Actividades realizadas cpu1= 151
+Actividades realizadas cpu2= 188
+jul 14, 2019 11:01:38 PM Control run
+INFORMACIÓN: 
+Actividades generadas= 451
+Actividades realizadas cpu1= 206
+Actividades realizadas cpu2= 245
+jul 14, 2019 11:01:40 PM Control run
+INFORMACIÓN: 
+Actividades generadas= 561
+Actividades realizadas cpu1= 268
+Actividades realizadas cpu2= 293
+jul 14, 2019 11:01:42 PM Control run
+INFORMACIÓN: 
+Actividades generadas= 675
+Actividades realizadas cpu1= 330
+Actividades realizadas cpu2= 345
+jul 14, 2019 11:01:44 PM Control run
+INFORMACIÓN: 
+Actividades generadas= 787
+Actividades realizadas cpu1= 394
+Actividades realizadas cpu2= 393
+jul 14, 2019 11:01:46 PM Control run
+INFORMACIÓN: 
+Actividades generadas= 898
+Actividades realizadas cpu1= 450
+Actividades realizadas cpu2= 448
+jul 14, 2019 11:01:48 PM Control run
+INFORMACIÓN: 
+Actividades generadas= 1000
+Actividades realizadas cpu1= 498
+Actividades realizadas cpu2= 502
+jul 14, 2019 11:01:48 PM Control run
+INFORMACIÓN: FIN
+jul 14, 2019 11:01:48 PM Control run
+INFORMACIÓN: 
+Tiempo de ejecucion: 18167
