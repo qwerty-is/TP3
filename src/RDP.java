@@ -3,13 +3,22 @@ import java.util.BitSet;
 
 public class RDP {
 
-    private final int FILAS=16;
-    private final int COLUMNAS=15;
+    private final int M = 15;
+    private final int N = 16;
+    private final int FILAS=16;     //n -> Numero de plazas
+    private final int COLUMNAS=15;  //m -> Numero de transiciones
+
+    private final int FILAS_H = M;
+    private final int COLUMNAS_H = N;
+
     private final long ALFA=5;
     private final long BETA=10;
     private final long GAMMA=10;
 
+    //Esto debería ser nx1, pero por alguna razon la hice 1xn
     private int[][] marcadoActual={{1},{0},{0},{0},{1},{0},{0},{0},{1},{0},{0},{1},{1},{0},{0},{0}};
+
+    //Esto debería ser nxm pero por alguna razón extraña la trabajé como mxn
     private int[][] matrizW={
 
             {-1,0,	0,	0,	0,	0,	0,	1,	0,	0,	0,	0,	0,	0,	0},
@@ -30,16 +39,27 @@ public class RDP {
             {0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	1,	-1},
 
     };
+    //La cuenta está hecha como si fuera mxn
+    private boolean[][] matrizH={
+            {},
+            {},
+            {},
+            {},
+            {},
+    };
 
     private BitSet Sensibilizadas;
     private BitSet Esperando;
+    private BitSet Insensibilizadas;
     private long[] tiemposSensibilizados = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
     private long[] tiempos = {0,0,0,ALFA,0,0,BETA,0,0,GAMMA,0,0,0,0,0};
 
     public RDP(){
         Sensibilizadas=new BitSet(COLUMNAS);
         Esperando=new BitSet(COLUMNAS);
+        Insensibilizadas = new BitSet(COLUMNAS);
         actualizarSensibilizadas();
+        actualizarInsensibilizadas();
         actualizarTiempos();
     }
 
@@ -47,9 +67,12 @@ public class RDP {
         return Sensibilizadas;
     }
 
+    public BitSet getInsensibilizadas(){return Insensibilizadas;}
+
     public void dispararRed(int transicion){
         actualizarMarcado(transicion);
         actualizarSensibilizadas();
+        actualizarInsensibilizadas();
         actualizarTiempos();
 
     }
@@ -66,33 +89,25 @@ public class RDP {
                 }
             }
         }
-        if(marcadoActual[6][0]>0||marcadoActual[7][0]>0)
-        {
-            Sensibilizadas.clear(7);
-        }
-        if(marcadoActual[9][0]>0||marcadoActual[10][0]>0){
-            Sensibilizadas.clear(14);
-        }
-        if(marcadoActual[2][0]==0){
-            Sensibilizadas.clear(0);
-        }
-        if(marcadoActual[13][0]==0){
-            Sensibilizadas.clear(12);
-        }
 
-        if(marcadoActual[3][0]==0){
-            Sensibilizadas.clear(2);
-            Sensibilizadas.clear(5);
-        }
-        if(marcadoActual[15][0]==0){
-            Sensibilizadas.clear(8);
-            Sensibilizadas.clear(11);
+    }
+
+    private void actualizarInsensibilizadas(){
+
+        Insensibilizadas.set(0,M);
+        for(int i=0;i<FILAS_H;i++){
+            for(int j=0;j<COLUMNAS_H;j++){
+                if(matrizH[i][j] && marcadoActual[0][j]>0){
+                    Insensibilizadas.clear(i);
+                    break;
+                }
+            }
         }
 
     }
 
     public boolean puedoDisparar(int transicion){
-        return Sensibilizadas.get(transicion);
+        return Sensibilizadas.get(transicion) && Insensibilizadas.get(transicion);
     }
 
     private void actualizarMarcado(int T){ marcadoActual=suma(marcadoActual,obtenerColumna(matrizW,T));
