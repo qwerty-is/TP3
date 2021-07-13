@@ -23,7 +23,7 @@ public class RDP {
     //Esto debería ser nx1, pero por alguna razon la hice 1xn
     private int[][] marcadoActual={{1},{0},{0},{0},{1},{0},{0},{0},{1},{0},{0},{1},{1},{0},{0},{0}};
 
-    //Esto debería ser nxm pero por alguna razón extraña la trabajé como mxn
+    //
     private int[][] matrizW={
 
             {-1,0,	0,	0,	0,	0,	0,	1,	0,	0,	0,	0,	0,	0,	0}, //P0
@@ -130,7 +130,7 @@ public class RDP {
         Sensibilizadas.clear();
         for(int j=0;j<COLUMNAS;j++){
             for(int i=0;i<FILAS;i++){
-                if(marcadoActual[i][0]+matrizI[i][j]<0){
+                if(marcadoActual[i][0]-matrizI[i][j]<0){
                     break;
                 }
                 if(i==FILAS-1){
