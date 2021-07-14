@@ -152,7 +152,6 @@ public class RDP {
     /*
     * Actualiza el vector de Sensibilizadas. Coloca 1 si la posición 'j' si la transición 'j'
     * se sensibiliza. 0 en caso contrario.
-    *
     * */
     private void actualizarSensibilizadas(){
         Sensibilizadas.clear();
